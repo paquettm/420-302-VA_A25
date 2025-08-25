@@ -87,7 +87,7 @@ Customize any accessibility features you need and click *Next*.
 Select the *English (US)* keyboard for this lab, and click *Next*.
 
 In the *Connect to the internet* screen, the *Use wired connection* should be selected if your computer is connected to an ethernet cable.
-In our lab, the ethernet cable should connect the computer ethernet port to the nearest port labeled with the highest number of the group.
+In our lab, the ethernet cable should connect the computer ethernet port to the nearest port labeled *210A*.
 Click *Next*.
 
 If the *An update is available for the installer* screen shows you will have the option to upgrade the installer before proceeding to the installation.
