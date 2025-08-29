@@ -18,7 +18,7 @@ export default [
     },
   },
   {
-    label: "Resources",
+    label: "External Resources",
     autogenerate: {
       directory: "resources",
     },
