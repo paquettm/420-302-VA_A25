@@ -1,19 +1,16 @@
 ---
-title: Lab 2- Raspberry Pi OS SD Card Preparation
-description: Lab 2- Raspberry Pi OS SD Card Preparation
+title: 'Lab 2: Raspberry Pi OS SD Card Preparation'
+description: 'Lab 2: Raspberry Pi OS SD Card Preparation'
 sidebar:
-  label: 'Lab 2'
+  label: 'Lab 2: Raspberry Pi OS SD Card Preparation'
   order: 2
 ---
 ---
-## Reminder
-:::note
-- To be able to boot up your Raspberry Pi, you must have an Operating System with a working configuration installed on its boot medium.
-- By default, Raspberry Pi devices will boot up from a micro SD card inserted in a port for this purpose on the backside of the SBC (Single-Board Computer).
-Some models can also be made to boot up from USB, which can be more practical.
-:::
 
----
+To be able to boot up your Raspberry Pi, you must have an Operating System with a working configuration installed on its boot medium.
+
+By default, Raspberry Pi devices will boot up from a micro SD card inserted in a port for this purpose on the backside of the SBC (Single-Board Computer).
+Some models can also be made to boot up from USB, which can be more practical.
 
 ## Requirements
 
@@ -23,8 +20,6 @@ You will need to have the following hardware
 - A micro-SD card with at least 8GB of capacity. It is best to purchase a good-quality, fast SD card. Refer to [this article](https://www.engadget.com/best-microsd-card-130038282.html) to know what a good SD card is.
 
 Computers in lab D-221 do not have micro-SD card adapters built-in, so you will need the USB adapter.
-
----
 
 ## Imaging Software
 
@@ -41,7 +36,6 @@ Click on the link matching your operating system to start the download.
 Navigate in your operating system to the location of this download and execute the installer file.
 Follow the steps on-screen to complete installation.
 
----
 ### Installing under Ubuntu Linux
 
 Under Ubuntu, **Raspberry Pi Imager** is part of a repository of standard software that can be accessed directly from the command line.
@@ -60,8 +54,6 @@ sudo apt install rpi-imager
 ```
 This will ask the `aptitude` package installer to install the entire **Raspberry Pi Imager** software package.
 You should be asked to confirm whether or not you wish to proceed with the new installation; answer "Y" and press enter or just press enter.
-
----
 
 ## Creating the New SD Card
 
@@ -83,7 +75,6 @@ Click Choose Storage, enter you USB SD card writer in the USB port.
 Select this new device from the list.
 Click Next.
 
----
 ### Use OS Customisation
 Click *Edit Settings*
 **continue here**
@@ -122,9 +113,7 @@ Click **CHOOSE STORAGE**.
 In the list, select the SD card that you connected to the host computer.
 Do not select another disk because the next operation will be fatal to any data stored on the disk that will be imaged.
 
-One way to ensure that you have selected the correct drive is to open the selection menu without th SD card connected to the system and then connect the SD card to the system, selecting this new device.
-
----
+One way to ensure that you have selected the correct drive is to open the selection menu without th SD card connected to the system and then connect the SD card to the system, seleting this new device.
 
 ### Writing the Image
 
@@ -135,8 +124,6 @@ Proceed at your own risk.
 ## Validating the Configuration
 
 Once your SD card has been written and verified by Raspberry Pi Imager, you may eject it from the PC and insert it into the unpowered Raspberry Pi device.
-
----
 
 ### Network Connection
 
@@ -149,13 +136,13 @@ If the RPi and the wireless network have been configured correctly, then it shou
 
 Frist try pnging the RPi, using its hostname, for example:
 
-```sh
+```
 ping hostname.local
 ```
 
 If the device is found, try connecting to it using `ssh` with your user name and hostname as follows:
 
-```sh
+```
 ssh user@hostname.local
 ```
 
@@ -172,15 +159,13 @@ Allow a few minutes for it to boot up.
 
 If the connection via gadget mode is successful, then the above checks will provide positive results.
 
----
-
 ### VNC Setup
 
 If the Network Connection or the Gadget Mode Connection with the RPi has been successful, and you have connected to it via SSH, then you have access to the RPi command prompt.
 
 To set up VNC, type
 
-```sh
+```
 sudo raspi-config
 ```
 
@@ -191,11 +176,9 @@ Navigate to **Interface Options** and then **VNC** and select **Yes**.
 Exit the raspi-config program.
 
 In the unlikely case you must reboot, type 
-```sh
+```
 sudo reboot
 ```
-
----
 
 ### VNC Connection
 
@@ -209,8 +192,6 @@ You should now have access to the graphical desktop.
 Note: This graphical connection is very nice to hav but by no means necessary to perform operations on the Raspberry Pi.
 In most cases, when coding or running Python, configuring Linux/Raspberry Pi OS, etc. you will be working from the command prompt, a.k.a. the terminal.
 For this reason, the real requirement for accessing your Raspberry Pi is the ability to SSH into your account.
-
----
 
 ## Explore
 
