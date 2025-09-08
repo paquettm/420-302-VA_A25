@@ -115,12 +115,8 @@ We will use an editor such as
 - Notepad on Windows
 to modify our code.
 
-You may also modify the code by using [online-python.com](https://www.online-python.com/), as follows:
-- Go to [https://www.online-python.com/](https://www.online-python.com/).
-- Open the existing file by clicking on the **Open File from Disk** icon represented by an open folder, browsing for this file and selecting it to be open.
-- Making the code changes
-- Save the file by clicking on the **Save File to Disk** icon that represents a disquette. Follow the dialogue to save the file and overwrite the old file.
-- You can run the code by clicking on **Run** and see the output in the console below.
+To make things much more exciting, use Thonny to open and modify your file.
+Refer to the [Extra Fun](#extra-fun) section for installation instructions.
 
 Modify the file hello.py by adding a comment line such as
 ```
