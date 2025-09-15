@@ -9,3 +9,4 @@ Activities:
     - Lab 2: Raspberry Pi OS SD Card Preparation
     - Discussion on / Introduction to Python
     - Assignment 1: GitHub distribution
+- Class 3: [Python Web Application](https://github.com/paquettm/todo-python-flask-app)
