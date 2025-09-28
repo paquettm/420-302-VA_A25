@@ -17,4 +17,4 @@ Activities:
 - Class 5:
     - Questions on Intro to Python in Context from last class
     - Theory: [The Client-Server Communication Model and HTTP](THEORY/Client-Server_and_HTTP.md)
-    - Lab 5 : [ESP32 MicroPython Web Server](LAB5_ESP32_MicroPython_Web_Server.md)
+    - Lab 5 : [ESP32 MicroPython Web Server](LABS/LAB5_ESP32_MicroPython_Web_Server.md)
