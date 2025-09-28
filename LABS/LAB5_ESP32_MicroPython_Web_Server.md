@@ -20,9 +20,14 @@ The `esptool` package contains an ESP chip flash utility which we use to change 
 Think of firmware as an operating system.
 
 To install the new firmware needed to use MicroPython, we must install esptool on our development computer and this is done with the following command:
-```
+```bash
 pip install esptool
 ```
+And if that failed, create a folder, a virtual environment, enter it, and run 
+```bash
+pip install esptool
+```
+again.
 
 In the following steps, we will use `esptool` to **install the MicroPython interpreter firmware directly onto our ESP32 development boards**.
 
@@ -45,8 +50,6 @@ In the following steps, we will use `esptool` to **install the MicroPython inter
 
 3. **Flashing MicroPython Firmware**
 
-### Method 1 Flashing MicroPython Firmware with esptool at the command line
-
 We first find and download the correct firmware image for our development board, as follows:
 
 - Navigate to `MicroPython.org`.
@@ -57,13 +60,39 @@ We first find and download the correct firmware image for our development board,
 
 Follow the instructions provided on the installation page.
 
-### Method 2 Flashing MicroPython Firmware Using Thonny
-- Open Thonny, connect the ESP32 board via USB, and navigate to “Tools > Options > Interpreter”.
-- Select “MicroPython (ESP32)” and set the serial port according to what you found earlier.
-- Click on the `install or update MicroPython (esptool)` link in the same dialog.
-- Use the Firmware flashing wizard with appropriate selections
+For example:
+Enter "that virtual environment" if you ever left it.
 
-***
+**Erasing**
+If you are putting MicroPython on your board for the first time then you should first erase the entire flash using:
+
+Run, from that virtual environment
+```bash
+esptool erase_flash
+```
+esptool.py will try to detect the serial port with the ESP32 automatically, but if this fails or there might be more than one Espressif-based device attached to your computer then pass the --port option with the name of the target serial port. For example:
+
+```bash
+esptool --port PORTNAME erase_flash
+```
+
+On Linux, the port name is usually similar to `/dev/ttyUSB0`.
+
+**Flashing**
+Then deploy the firmware to the board, starting at address 0x1000:
+
+```bash
+esptool --baud 460800 write_flash 0x1000 ESP32_BOARD_NAME-DATE-VERSION.bin
+```
+Replace ESP32_BOARD_NAME-DATE-VERSION.bin with the .bin file downloaded from this page.
+
+As above, if esptool.py can't automatically detect the serial port then you can pass it explicitly on the command line instead. For example:
+
+```bash
+esptool --port PORTNAME --baud 460800 write_flash 0x1000 ESP32_BOARD_NAME-DATE-VERSION.bin
+```
+
+If you see no error messages on your terminal window, all should be well!
 
 ## Part 2: ESP32 MicroPython Application with WiFi and LEDs
 
