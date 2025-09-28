@@ -108,6 +108,27 @@ To figure out the correct folder name, you may use `dir` in Windows and `ls` in 
 
 ### Step 5: Modify Code and Commit Changes
 
+Probably at this point you could encounter an error about not having set up the global ientity settings that would resemble
+
+```bash
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+```
+
+If you do, it becomes important to run the following commands, where you replace "you@example.com" with your github-registered email and "Your Name" with your author name.
+For example, I would enter
+```bash
+git config --global user.email "paquettm@vaniercollege.qc.ca"
+git config --global user.name "Michel Paquette"
+```
+
+
 **In this step, we must work with files that already exist in the repository folder.**
 
 We will use an editor such as 
