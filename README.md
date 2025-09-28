@@ -9,7 +9,12 @@ Activities:
     - Lab 2: Raspberry Pi OS SD Card Preparation
     - Discussion on / Introduction to Python
     - Assignment 1: GitHub distribution
-- Class 3: [Python Web Application](https://github.com/paquettm/todo-python-flask-app)
+- Class 3:
+    - Lab 3: [Python Web Application](https://github.com/paquettm/todo-python-flask-app)
 - Class 4:
     - Questions about the Python Web Application from last class
-    - Activity of the Raspberry Pi: [Intro to Python in Context - Variables, Function, Classes, Objects, Lists, Libraries, GPIO](https://github.com/paquettm/Python_GPIO_Binary_Counter)
+    - Lab 4: Activity of the Raspberry Pi: [Intro to Python in Context - Variables, Function, Classes, Objects, Lists, Libraries, GPIO](https://github.com/paquettm/Python_GPIO_Binary_Counter)
+- Class 5:
+    - Questions on Intro to Python in Context from last class
+    - Theory: [The Client-Server Communication Model and HTTP](THEORY/Client-Server_and_HTTP.md)
+    - Lab 5 : [ESP32 MicroPython Web Server](LAB5_ESP32_MicroPython_Web_Server.md)
