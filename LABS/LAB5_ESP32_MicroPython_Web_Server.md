@@ -147,8 +147,6 @@ Since we are connected to WiFi, I wonder if we could make the ESP32 into a tiny 
 
 ## Part 3: ESP32 MicroPython Web Server
 
-1. **Simple Web Server Code**
-
    Add to the code (end of previous file):
 
 ```python
@@ -200,6 +198,10 @@ Your IPv4 addresses (###.###.###.###) probably will differ from this example.
 Make a note of the first such address from your output, positioned like the address `192.168.2.107` from the above.
 
 Open a browser Visit `http://192.168.2.107` where you place the address that you obtained in your output as above.
+
+What do you notice?
+Which instructions do you believe are responsible for making the server receive the requests?
+Which instructions do you believe are sending the HTTP response?
 
 ## Conclusion
 
