@@ -5,14 +5,18 @@ This tutorial guides students through three main phases:
 - Writing a MicroPython program to handle WiFi connectivity and LED status indicators.
 - Running a simple web server on the ESP32 to confirm successful WiFi connection.
 
-This tutorial uses Thonny on your development computer.
-If you have not done so already, install Thonny by running:
-```bash
-sudo apt install thonny
-```
+## Thonny Thonny Thonny
 
-Once you will have new firmware flashed to your ESP32 development board, this process should not need be followed again.
-Firmware is stored in persistent memory - memory that stays the same - such that it never needs to be updated unless it becomes damaged or out-of-date.
+This tutorial uses Thonny on your development computer.
+
+If you have not installed Thonny through the Ubuntu App Center, you may be having issues with saving files.
+In this case, uninstall Thonny with the following command (in a bash terminal window):
+```bash
+sudo apt remove thonny
+```
+and answer yes when requested.
+Then go to the Ubuntu App Center in the left navigation bar or activities menu.
+Search for Thonny and install it.
 
 ## Part 1: Setup and Flashing MicroPython to ESP32
 
@@ -93,6 +97,9 @@ esptool --port PORTNAME --baud 460800 write_flash 0x1000 ESP32_BOARD_NAME-DATE-V
 ```
 
 If you see no error messages on your terminal window, all should be well!
+
+Once you will have new firmware flashed to your ESP32 development board, this process should not need be followed again.
+Firmware is stored in persistent memory - memory that stays the same - such that it never needs to be updated unless it becomes damaged or out-of-date.
 
 ## Part 2: ESP32 MicroPython Application with WiFi and LEDs
 
