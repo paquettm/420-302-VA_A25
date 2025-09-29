@@ -107,35 +107,38 @@ TIP: Check the pinout to your ESP32 device to make sure your connections are on 
 
 2. **MicroPython Code Sample**
 
-   ```python
-   import network
-   import time
-   import machine
+```python
+import network
+import time
+import machine
 
-   LED_POWER = machine.Pin(2, machine.Pin.OUT)
-   LED_WIFI = machine.Pin(15, machine.Pin.OUT)
+LED_POWER = machine.Pin(2, machine.Pin.OUT)
+LED_WIFI = machine.Pin(15, machine.Pin.OUT)
 
-   # Change these values according to your network name (SSID) and password
-   SSID = "your_wifi_ssid"
-   PASSWORD = "your_wifi_password"
+# Change these values according to your network name (SSID) and password
+SSID = "your_network_name"
+PASSWORD = "your_network_password"
 
-   LED_POWER.value(1)  # Board is powered on
+LED_POWER.value(1)  # Board is powered on
 
-   wlan = network.WLAN(network.STA_IF)
-   wlan.active(True)
+wlan = network.WLAN(network.STA_IF)
+wlan.active(True)
 
-   # Blinking while connecting
-   blink = True
-   while not wlan.isconnected():
-       LED_WIFI.value(blink)
-       blink = not blink
-       time.sleep(0.5)
-       wlan.connect(SSID, PASSWORD)
+# Blinking while connecting
+blink = True
+while not wlan.isconnected():
+    try:
+        LED_WIFI.value(blink)
+        blink = not blink
+        wlan.connect(SSID, PASSWORD)
+    except:
+        print("WiFi connection failed... retrying.")
+    time.sleep(0.5)
 
-   # Connected, turn WiFi LED ON
-   LED_WIFI.value(1)
-   print("Connected to WiFi:", wlan.ifconfig())
-   ```
+# Connected, turn WiFi LED ON
+LED_WIFI.value(1)
+print("Connected to WiFi:", wlan.ifconfig())
+```
 
    - Save and run this program from Thonny with the ESP32 board selected as the MicroPython device, at the bottom right corner of the Thonny window.
 
@@ -150,6 +153,7 @@ Since we are connected to WiFi, I wonder if we could make the ESP32 into a tiny 
    Add to the code (end of previous file):
 
 ```python
+import socket
 #a tiny web server
 addr = socket.getaddrinfo('0.0.0.0', 80)[0][-1]
 s = socket.socket()
