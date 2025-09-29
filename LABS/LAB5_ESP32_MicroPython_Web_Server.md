@@ -167,13 +167,21 @@ LED_WIFI.value(1)
 print("Connected to WiFi:", wlan.ifconfig())
 ```
 
-   - Save and run this program from Thonny with the ESP32 board selected as the MicroPython device, at the bottom right corner of the Thonny window.
+To run this program on your ESP32, do as follows:
 
-**Tip: Running the MicroPython on the ESP32**
+- Connect the ESP32 to the computer throught USB.
+- Select `MicroPython (ESP32) - CP2102 USB to UART Bridge Controller @ /dev/ttyUSB0` or a similar entry, at the complete bottom-right corner of the Thonny window.
+- Click the save icon or press the `CTRL+S` key combination on the keyboard. Select `MicroPython device` and name it `main.py`.
+- It should run directly when the device is reset, but if not, just press the Start icon (the arrow in a green circle) or press `F5`.
 
+**Troubleshooting**
+If you can't make the selection at the bottom-right of Thonny, then make sure the ESP32 is indeed connected to the computer with a proper USB wire that includes data communication wires, not just the power wires.
+
+If this is already the case:
 - Click `Tools` at the top menu and `Options...`.
 - Select `Micropython (ESP32)` in the `Which kind of interpreter should Thonny use to run your code?` dropdown menu.
 - Select `CP2102 USB to UART Bridge Controller @ /dev/ttyUSB0` or the similar choice in the `Port or WebREPL` dropdown menu.
+- Close this window by clicking `OK`
 
 **Reflection:**
 
