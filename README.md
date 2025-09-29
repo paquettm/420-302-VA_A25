@@ -18,4 +18,4 @@ Activities:
     - Questions on Intro to Python in Context from last class
     - Theory: [The Client-Server Communication Model and HTTP](THEORY/Client-Server_and_HTTP.md)
     - Lab 5 : [ESP32 MicroPython Web Server](LABS/LAB5_ESP32_MicroPython_Web_Server.md)
-    - Homework : Team and first Term project proposal
+    - Homework : Read the [Term Project definition](Term_Project.md), compose teams and complete your first Term project proposal brainstorming
