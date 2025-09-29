@@ -1,5 +1,8 @@
 # Lab 5: ESP32 MicroPython Web Server
 
+This tutorial is inspired by a blog post on [Hosting a WebSite on a Disposable Vape
+](http://ewaste.fka.wtf/)
+
 This tutorial guides students through three main phases:
 - Connecting an ESP32 to an Ubuntu computer and flashing the correct MicroPython firmware.
 - Writing a MicroPython program to handle WiFi connectivity and LED status indicators.
