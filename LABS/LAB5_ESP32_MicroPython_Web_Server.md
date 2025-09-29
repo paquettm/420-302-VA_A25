@@ -52,6 +52,12 @@ In the following steps, we will use `esptool` to **install the MicroPython inter
    - Select the build that matches the ESP32 development board’s chipset (e.g., generic, WROVER, S2, S3).
    - Download the latest stable `.bin` firmware file to the Ubuntu computer.
 
+TIP: It may be difficult to find the correct firmware for your board. In this situation, you may want to use esptool to identify your chip.
+From the virtual envronment where esptool is installed, and with the ESP32 connected to the computer through USB, run
+```bash
+esptool chip-id
+```
+
 3. **Flashing MicroPython Firmware**
 
 We first find and download the correct firmware image for our development board, as follows:
@@ -101,6 +107,17 @@ If you see no error messages on your terminal window, all should be well!
 Once you will have new firmware flashed to your ESP32 development board, this process should not need be followed again.
 Firmware is stored in persistent memory - memory that stays the same - such that it never needs to be updated unless it becomes damaged or out-of-date.
 
+### Alternative method: The Thonny wizard
+
+- Click `Tools` at the top menu and `Options...`.
+- Select the `Interpreter` tab.
+- Click the `Install or update MicroPython (esptool)` hyperlink.
+- Select `CP2102 USB to UART Bridge Controller @ /dev/ttyUSB0` or the similar choice in the `Target port` dropdown menu.
+- Select `ESP32` in the `MicroPython family` dropdown menu. If you have a different ESP32 as per the `esptool chip-id` output, find the matching one.
+- Select `Espressif - ESP32 / WROOM` in the `variant` dropdown menu, or another variant matching your exact model.
+- Select the latest version from the `version` dropdown menu.
+- Click `Install`.
+
 ## Part 2: ESP32 MicroPython Application with WiFi and LEDs
 
 Write and deploy this application using Thonny:
@@ -149,9 +166,17 @@ print("Connected to WiFi:", wlan.ifconfig())
 
    - Save and run this program from Thonny with the ESP32 board selected as the MicroPython device, at the bottom right corner of the Thonny window.
 
-What do you notice?
-Which instructions do you believe are responsible for making the leds light up and blink?
-Which instructions do you believe are setting up and executing the WiFi connection?
+**Tip: Running the MicroPython on the ESP32**
+
+- Click `Tools` at the top menu and `Options...`.
+- Select `Micropython (ESP32)` in the `Which kind of interpreter should Thonny use to run your code?` dropdown menu.
+- Select `CP2102 USB to UART Bridge Controller @ /dev/ttyUSB0` or the similar choice in the `Port or WebREPL` dropdown menu.
+
+**Reflection:**
+
+- What do you notice?
+- Which instructions do you believe are responsible for making the leds light up and blink?
+- Which instructions do you believe are setting up and executing the WiFi connection?
 
 Since we are connected to WiFi, I wonder if we could make the ESP32 into a tiny web server.
 
@@ -210,10 +235,20 @@ Make a note of the first such address from your output, positioned like the addr
 
 Open a browser Visit `http://192.168.2.107` where you place the address that you obtained in your output as above.
 
-What do you notice?
-Which instructions do you believe are responsible for making the server receive the requests?
-Which instructions do you believe are sending the HTTP response?
+**Reflection:**
+
+- What do you notice?
+- Which instructions do you believe are responsible for making the server receive the requests?
+- Which instructions do you believe are sending the HTTP response?
 
 ## Conclusion
 
 In this tutorial, you were introduced to core embedded programming, Linux hardware interfacing, and simple IoT networking principles.
+
+## Challenge
+
+- If you understood the exercise fully, then you should be able to modify the code to handle different Webpages from different addresses in the requests.
+- Otherwise, pair up and discuss the code, what each part does and how you could modify it to accomplish this challenge.
+- Invite the teacher and explain what each part of the code does and how you would make the modifications to get the requested result.
+
+**Update your reflection logs**
