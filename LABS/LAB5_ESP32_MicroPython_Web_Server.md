@@ -174,6 +174,11 @@ To run this program on your ESP32, do as follows:
 - Click the save icon or press the `CTRL+S` key combination on the keyboard. Select `MicroPython device` and name it `main.py`.
 - It should run directly when the device is reset, but if not, just press the Start icon (the arrow in a green circle) or press `F5`.
 
+Note: Saving the micropython program as `main.py` should make the ESP32 board run this program automatically on power-up.
+If not, you can run the `import main` command at the REPL (the micropython debug window when the ESP32 device is connected and selected at the bottom-right).
+The `CTRL+C` key combination can stop a program from running.
+The `CTRL+D` key combination can start the main program up again.
+
 **Troubleshooting**
 If you can't make the selection at the bottom-right of Thonny, then make sure the ESP32 is indeed connected to the computer with a proper USB wire that includes data communication wires, not just the power wires.
 
