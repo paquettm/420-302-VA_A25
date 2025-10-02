@@ -21,6 +21,14 @@ and answer yes when requested.
 Then go to the Ubuntu App Center in the left navigation bar or activities menu.
 Search for Thonny and install it.
 
+## Setup: Allowing user dialout
+
+To allow your user to access the serial ports (necessary for uploading code to Arduino boards), you must add your user to the "dialout" group. Replace `<username>` with your actual username in the following command:
+   ```
+   sudo usermod -a -G dialout <username>
+   ```
+If you don't know your username, enter the `whoami` at the command prompt in a terminal.
+
 ## Part 1: Setup and Flashing MicroPython to ESP32
 
 The `esptool` package contains an ESP chip flash utility which we use to change the firmware of our ESP32.
