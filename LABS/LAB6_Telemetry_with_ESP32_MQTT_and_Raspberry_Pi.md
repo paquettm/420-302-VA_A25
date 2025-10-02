@@ -170,42 +170,267 @@ We will be able to verify that communications between devices are functional by 
 We will read sample data from an I2C sensor connected to one of our ESP32 dev board's I2C interfaces.
 We will then convert this data to the correct units before publishing it, periodically, on the MQTT topic `room/temperature`.
 
+### A. Setup
 
-Open Thonny
+On your Raspberry Pi, open Thonny.
+Connect your ESP32 to your Raspberry Pi via USB.
+In Thonny, select the `MicroPython (ESP32)...` option at the bottom right corner of the Thonny application. This will interface with your ESP32 MicroPython environment.
 
-In the ESP32 Code
+### B. WiFi Connection
+
+Create a new file and enter the following MicroPython code.
 
 ```python
-# main.py — ESP32 MicroPython: publish temperature via MQTT
-# Topics: room/temperature
+import time
+import network
+#network is used to access the ESP32’s Wi-Fi interface in station mode, letting it join an existing network.
 
+WIFI_SSID = "WiFi_SSID"
+WIFI_PASS = "WiFi_password"
+
+def wifi_connect():
+    #Initializes the station interface with network.WLAN(network.STA_IF) and activates it.
+    sta = network.WLAN(network.STA_IF)
+    sta.active(True)
+    #Initiates a connection with the credentials.
+    sta.connect(WIFI_SSID, WIFI_PASS)
+    #Pause the application until we know WiFi is connected
+    while not sta.isconnected():
+        print("connecting...")
+        time.sleep(1)
+    #Once connected, the network info is printed for reference
+    print(f"WiFi connected {sta.ifconfig()}")
+    return sta.isconnected()
+
+def main():
+    # Wi-Fi
+    wifi_connect()
+
+if __name__ == '__main__':
+    main() 
+```
+
+This MicroPython code connects an ESP32 device to a Wi-Fi network using the provided SSID and password, looping until a successful connection is established.
+
+Run this code to ensure that it completes successfully before trying anything else.
+
+### C. I2C Interface
+
+We will add the I2C connection component to the program.
+
+**Setup:**
+First verify which pins your ESP32 dev board uses for its I2C bus controllers. These pins should be labeled SDA and SCL for the data and clock lines, respectively, of the I2C bus. On most ESP32 boards, the default I2C pins are GPIO 21 for SDA and GPIO 22 for SCL.
+
+Connect your own I2C sensor to the I2C bus controller by direct wire connection from SDA to SDA, SCL to SCL, VCC to VCC and GND to GND.
+Pull-down resistors are normally integrated in the ESP32 development boards, so for small setups there is normally no need to add any.
+
+**Code:**
+Adding the I2C configuration portion to the preceding code, we add the operations of defining and configuring the I2C connection, as well as verifying the presence of the devices on the bus.
+
+In the example below, the I2C sensor is an MCP9808, a popular and cheap temperature sensor with the base address `0x18`.
+
+The number 0x18 is a hexadecimal number. Hexadecimal numbers are written using base 16, which means each digit can have sixteen possible values: 0–9 for the first ten values, followed by A–F to represent the decimal values 10 through 15. Hexadecimal notation is commonly used in computing and electronics because it is more compact than binary and easier to convert between systems—each hex digit corresponds directly to four binary digits (bits).
+The number `0x18` therefore converts to `24` in devimal notation.
+
+The new code will import the `machine` module to interface with the pins and I2C bus controller.
+Define the pin numbers in the frontmatter section of the program - allowing all members of a programming team to see the defined values right at the top of the program.
+Then, in the main method, we initialise the I2C bus controller interface object with the values
+```python
+i2c = I2C(0, scl=Pin(I2C_SCL), sda=Pin(I2C_SDA), freq=I2C_FREQ)
+```
+before scanning the bus and checking that the sensor is indeed connected.
+
+```python
 import time
 import network
 from machine import Pin, I2C
-from umqtt.simple import MQTTClient  # use umqtt.robust if desired
 
-WIFI_SSID = "SSID"
-WIFI_PASS = "password!"
-
-MQTT_BROKER = "local name of your computer"
-MQTT_PORT = 1883
-MQTT_CLIENT_ID = "esp32-room-sensor"
-MQTT_KEEPALIVE = 60  # seconds
-
-TOPIC_TEMP = b"room/temperature"
-TOPIC_HUM = b"room/humidity"
+WIFI_SSID = "WiFi_SSID"
+WIFI_PASS = "WiFi_password"
 
 # I2C config — adjust pins as wired
 I2C_SCL = 22
 I2C_SDA = 21
 I2C_FREQ = 100000
 
-# SHT31 constants
-SHT31_ADDR = 0x44  # 0x45 if ADR pin tied high
-SHT31_MEAS_HIGHREP = b"\x24\x00"  # single shot, high repeatability
-# Datasheet: T = -45 + 175 * (rawT/65535), RH = 100 * (rawRH/65535)
-sta = 0
-#probablement que l<objet meurt et que ca deconnecte... faudrait le passer?
+# MCP9808 constants
+MCP9808_ADDR = 0x18
+
+def wifi_connect():
+    #Initializes the station interface with network.WLAN(network.STA_IF) and activates it.
+    sta = network.WLAN(network.STA_IF)
+    sta.active(True)
+    #Initiates a connection with the credentials.
+    sta.connect(WIFI_SSID, WIFI_PASS)
+    #Pause the application until we know WiFi is connected
+    while not sta.isconnected():
+        print("connecting...")
+        time.sleep(1)
+    #Once connected, the network info is printed for reference
+    print(f"WiFi connected {sta.ifconfig()}")
+    return sta.isconnected()
+
+def main():
+    # Initialise the I2C bus on the connected pins
+    i2c = I2C(0, scl=Pin(I2C_SCL), sda=Pin(I2C_SDA), freq=I2C_FREQ)
+    
+    # scan and verify presence
+    found = i2c.scan()
+    if MCP9808_ADDR not in found:
+        print("Warning: MCP9808 not found on bus; scan:", [hex(a) for a in found])
+
+    # Wi-Fi
+    wifi_connect()
+
+
+if __name__ == '__main__':
+    main() 
+```
+
+**D. Acquiring I2C data**
+
+
+```python
+import time
+import network
+from machine import Pin, I2C
+
+WIFI_SSID = "WiFi_SSID"
+WIFI_PASS = "WiFi_password"
+
+# I2C config — adjust pins as wired
+I2C_SCL = 22
+I2C_SDA = 21
+I2C_FREQ = 100000
+
+# MCP9808 constants
+MCP9808_ADDR = 0x18
+# MCP9808 registers (datasheet, temp register 0x05: 13-bit, sign and flags in upper bits)
+REG_AMBIENT_TEMP = 0x05
+
+def wifi_connect():
+    #Initializes the station interface with network.WLAN(network.STA_IF) and activates it.
+    sta = network.WLAN(network.STA_IF)
+    sta.active(True)
+    #Initiates a connection with the credentials.
+    sta.connect(WIFI_SSID, WIFI_PASS)
+    #Pause the application until we know WiFi is connected
+    while not sta.isconnected():
+        print("connecting...")
+        time.sleep(1)
+    #Once connected, the network info is printed for reference
+    print(f"WiFi connected {sta.ifconfig()}")
+    return sta.isconnected()
+
+def mcp9808_read_c(i2c):
+    # Read two bytes from ambient temperature register
+    data = i2c.readfrom_mem(MCP9808_ADDR, REG_AMBIENT_TEMP, 2)
+    t_upper = data[0]
+    t_lower = data[1]
+    # Combine the two bytes into one number
+    raw = (t_upper << 8) | t_lower
+    # Per MCP9808: bits 15..13 are flags (Tcrit/Tupper/Tlower), bits 12..0 are temperature
+    # Mask the upper 3 bits that are not numerical
+    temp_raw = raw & 0x1FFF  # 13-bit temperature
+    # Sign bit is bit 12; if set, temperature is negative (two's complement for 13 bits)
+    if temp_raw & 0x1000: #use a bitwise operation to see if there is a match
+        temp_raw -= 1 << 13
+    # Resolution is 0.0625°C per LSB
+    celsius = temp_raw * 0.0625
+    return celsius
+
+
+def main():
+    # Initialise the I2C bus on the connected pins
+    i2c = I2C(0, scl=Pin(I2C_SCL), sda=Pin(I2C_SDA), freq=I2C_FREQ)
+    
+    # scan and verify presence
+    found = i2c.scan()
+    if MCP9808_ADDR not in found:
+        print("Warning: MCP9808 not found on bus; scan:", [hex(a) for a in found])
+
+    # Wi-Fi
+    wifi_connect()
+
+    while True:
+        try:
+            t = 1000
+            t = mcp9808_read_c(i2c)
+        except:
+            print("i2c read error")
+        print(f"Temperature : {('%.2f' % t).encode()}")
+        time.sleep(5)  # publish interval seconds
+
+if __name__ == '__main__':
+    main() 
+```
+
+**Bit-wise operations**
+
+Above we have a few operations that are manipulating values bit by bit. These are normally called **bit-wise** operations.
+
+Here are the explanations of each, with diagrams.
+- In the first few lines of the MCP9808 data acquisition function, 2 bytes are read into an array, then placed into 2 variables, and then assembled into a 2-byte "number"
+    -`data = i2c.readfrom_mem(MCP9808_ADDR, REG_AMBIENT_TEMP, 2)` reads 2 bytes into the `data` array
+    - `t_upper = data[0]` and `t_lower = data[1]` assigns 2 new variables
+    - `raw = (t_upper << 8) | t_lower` has 2 operations going on:
+        - `(t_upper << 8)` moves the bits from the `t_upper` variable 8 positions to the left... effectiely making these the most significant bits
+        - then the bit-wise OR operator `|` assembles the higher and lower bits into a single value which will be stored in the `raw` variable
+        ![bitwise](../public/images/shift_and_bitwise_or.png)
+    - `temp_raw = raw & 0x1FFF` uses the bit-wise AND to remove non-numerical bits from the data, as per the datasheet information. If you AND anything with 0, you get 0. Done bit-by-bit, we can cancel out, or mask, specific bits.
+    ![bitwise_and_mask](../public/images/bitwise_and_mask.png)
+    - with the same bitwise AND, we can check that a single bit, the twelfth in this case is set to `1` in the instructions
+    `temp_raw & 0x1000`
+    ![bitwise_and_condition](../public/images/bitwise_and_condition.png)
+    Because the number is 0, we know that this is false. It the result were non-zero,it would be true.
+    - the operation `temp_raw -= 1 << 13` happens if the 12th bit marked the number as negative. In this case, the special [Twos complement](https://en.wikipedia.org/wiki/Two%27s_complement) operation is often used to encode negative numbers. This provides the benefit of being able to store an extra number representation than you would if you just considered the bit to mean the same for positive and negative numbers.  
+    - The final operation, `celsius = temp_raw * 0.0625`, is just scaling by a factor. Each unit of raw temperature is worth `0.0625` degrees celcius, for this sensor.
+
+**E. Sending MQTT Messages**
+
+We use the `umqtt.simple` library, dedicated to MQTT communication, to ensure that we send compatible messages and respect the protocol.
+From this library, we will use the `MQTTClient` class to interface with MQTT services.
+
+The MQTT settings will include the the MQTT broker hostname or IP address, the service port (which is 1883 by default), a spacial name to identify our ESP32, a keepalive time that is used so the client sends a message to the server in the absence of other trafic in a specified time lapse. This keepalive may impact on reporting that sensors have come offline, etc.
+
+Other setup include the topic(s) where data will be published.
+
+The MQTT communication will occur in the `main()` method and will consist of
+- creation of the client object using the parameters
+- connection to the MQTT server
+- periodic polling of the sensor data and publishing to the chosen topic.
+
+Notice that many levels of try..except structures are present to handle any exceptions that may occur:
+- If the connection to the MQTT broker fails, the program will exit, making sure to always disconnect, if connected.
+- If the sensor becomes unavailable, then publising stops, until it comes back online
+- If publishing fails, a new connection is attempted.
+
+```python
+import time
+import network
+from machine import Pin, I2C
+from umqtt.simple import MQTTClient  # use umqtt.robust if desired
+
+WIFI_SSID = "WiFi_SSID"
+WIFI_PASS = "WiFi_password"
+
+# MQTT settings
+MQTT_BROKER = "waldo.local"
+MQTT_PORT = 1883
+MQTT_CLIENT_ID = "esp32-room-sensor"
+MQTT_KEEPALIVE = 60  # seconds
+TOPIC_TEMP = b"room/temperature"
+
+# I2C config — adjust pins as wired
+I2C_SCL = 22
+I2C_SDA = 21
+I2C_FREQ = 100000
+
+# MCP9808 constants
+MCP9808_ADDR = 0x18
+# MCP9808 registers (datasheet, temp register 0x05: 13-bit, sign and flags in upper bits)
+REG_AMBIENT_TEMP = 0x05
+
 def wifi_connect():
     sta = network.WLAN(network.STA_IF)
     sta.active(True)
@@ -216,50 +441,57 @@ def wifi_connect():
     print(f"WiFi connected {sta.ifconfig()}")
     return sta.isconnected()
 
-def read_sht31(i2c):
-    # trigger single-shot conversion
-    i2c.writeto(SHT31_ADDR, SHT31_MEAS_HIGHREP)
-    time.sleep_ms(20)  # wait conversion (~15ms typical)
-    data = i2c.readfrom(SHT31_ADDR, 6)
-    t_raw = (data[0] << 8) | data[1]
-    rh_raw = (data[3] << 8) | data[4]
-    # ignore CRC bytes (data[2], data[5]) for brevity
-    temperature = -45.0 + 175.0 * (t_raw / 65535.0)
-    humidity = 100.0 * (rh_raw / 65535.0)
-    return temperature, humidity
+def mcp9808_read_c(i2c):
+    # Read two bytes from ambient temperature register
+    data = i2c.readfrom_mem(MCP9808_ADDR, REG_AMBIENT_TEMP, 2)
+    t_upper = data[0]
+    t_lower = data[1]
+    # Combine
+    raw = (t_upper << 8) | t_lower
+    # Per MCP9808: bits 15..13 are flags (Tcrit/Tupper/Tlower), bits 12..0 are temperature
+    temp_raw = raw & 0x1FFF  # 13-bit temperature
+    # Sign bit is bit 12; if set, temperature is negative (two's complement for 13 bits)
+    if temp_raw & 0x1000:
+        temp_raw -= 1 << 13
+    # Resolution is 0.0625°C per LSB
+    celsius = temp_raw * 0.0625
+    return celsius
 
 def main():
+    # I2C
+    i2c = I2C(0, scl=Pin(I2C_SCL), sda=Pin(I2C_SDA), freq=I2C_FREQ)
+    
+    # Optional: scan and verify presence
+    found = i2c.scan()
+    if MCP9808_ADDR not in found:
+        print("Warning: MCP9808 not found on bus; scan:", [hex(a) for a in found])
+
     # Wi-Fi
-    assert wifi_connect(), "Wi-Fi connection failed"
+    wifi_connect()
 
     # MQTT
     mqtt = MQTTClient(MQTT_CLIENT_ID, MQTT_BROKER, MQTT_PORT, keepalive=MQTT_KEEPALIVE)
     try:
         mqtt.connect()
+        while True:
+            try:
+                t = mcp9808_read_c(i2c)
+                try:
+                    print(f"Publishing {('%.2f' % t).encode()} to {TOPIC_TEMP}")
+                    mqtt.publish(TOPIC_TEMP, ("%.2f" % t).encode())
+                except Exception as e:
+                    # try reconnect on publish error
+                    print("Publishing error")
+                    try:
+                        mqtt.connect()
+                    except:
+                        pass
+            except:
+                print("i2c read error")
+            time.sleep(5)  # publish interval seconds
     except Exception as e:
         print("MQTTClient connection failed");
         print(e)
-
-    # I2C
-    i2c = I2C(0, scl=Pin(I2C_SCL), sda=Pin(I2C_SDA), freq=I2C_FREQ)
-
-    try:
-        while True:
-            try:
-                #t, h = read_sht31(i2c)
-                t,h = 20,33
-                
-                print(f"Publishing {('%.2f' % t).encode()} to {TOPIC_TEMP}")
-                mqtt.publish(TOPIC_TEMP, ("%.2f" % t).encode())
-                print(f"Publishing {('%.2f' % h).encode()} to {TOPIC_HUM}")
-                mqtt.publish(TOPIC_HUM, ("%.2f" % h).encode())
-            except Exception as e:
-                # optional: try reconnect on publish/read error
-                try:
-                    mqtt.connect()
-                except:
-                    pass
-            time.sleep(5)  # publish interval seconds
     finally:
         try:
             mqtt.disconnect()
@@ -267,7 +499,99 @@ def main():
             pass
 
 main()
-
 ```
 
-Get data from sensors now
+Questions:
+- Are you able to run this code on your ESP32 without error?
+- What parameters do you need to adapt to your situation?
+- How do you find the information needed for this customisation?
+- Where woul you search for information if you were using a different sensor?
+- How can you check that the data reaches your MQTT broker? Will you use mosquitto_pub or mosquitto_sub?
+
+### Part 3: Raspberry Pi Python MQTT Subscriber
+
+For devices with more resources, the `paho.mqtt` library is available.
+
+Our final goal for this lab will be to leverage this library to build a simple program that connects to the MQTT server, subscribes to the topic of choice, and then receives/prints all the messages on this topic.
+
+The program below is written in a few phases.
+
+It is important to note that, since most of the processing happens in the library object functions, we only need to state what our program will do in specific cases.
+
+Therefore, we
+- define connection parameters
+- define callback functions: the code that gets run when things happen
+- instantiate the object
+- connect the object to the callbacks
+- call for the connection with the parameters
+- start the event loop that will know when to call our callback functions.
+
+This type of library manages much of what happens and is much simpler to use than the umqtt micropython library.
+
+```python
+import paho.mqtt.client as mqtt
+
+#connection parameters
+BROKER = "waldo.local"
+PORT = 1883
+TOPIC = "room/temperature"
+
+#Event handlers (a.k.a. callback functions)
+#what we do when the connection succeeds
+def on_connect(client, userdata, flags, rc):
+    print(f"Connected with result code {rc}")
+    client.subscribe(TOPIC)
+
+#what we do when a message arrives
+def on_message(client, userdata, msg):
+    print(f"Received on topic {msg.topic}: {msg.payload.decode()}")
+
+#creation of client object
+client = mqtt.Client()
+
+#setting the event handlers - these are variables set to functions
+client.on_connect = on_connect
+client.on_message = on_message
+
+#calling for the connection to occur
+client.connect(BROKER, PORT, keepalive=60)
+
+#starting the event loop without further processing
+client.loop_forever()
+#when we will also send messages, we will use client.loop() instead
+```
+
+Note that the used `paho.mqtt.client` class expects a few specific function names to work. This information comes from the [paho-mqtt client documentation found online](https://eclipse.dev/paho/files/paho.mqtt.python/html/client.html).
+
+Can you run the program and receive the temperature sensor telemetry?
+
+Is this program more equivalent to mosquitto_pub or mosquitto_sub?
+
+## Conclusion
+
+In this lab, a complete IoT telemetry loop was built using
+- an ESP32 with MicroPython,
+- an I2C temperature sensor,
+- a Mosquitto MQTT broker running on a Raspberry Pi, and
+- a Python MQTT subscriber on Raspberry Pi.
+
+This setup showeded how sensors can sample environmental data, transmit it wirelessly using MQTT, and have it distributed, processed, or displayed by a computer.
+
+You learned how to:
+- Install and configure the Mosquitto MQTT broker on the Raspberry Pi for both local and external connection.
+- Connect an ESP32 running MicroPython to a WiFi network, read temperature data from an I2C sensor, and publish it as MQTT messages to a designated topic.
+- Subscribe to MQTT topics with a minimal Python program on the Raspberry Pi.
+
+### Additional Notes & Recommendations
+
+**Security note:**  
+Anonymous external access to your MQTT broker is convenient for prototyping but is *not* recommended for *production environments*.
+
+**Sensor expansion:**  
+If you wish to use other I2C sensors, review their datasheets for register addresses, bit layouts, and conversion logic. Only the acquisition function and topic naming might differ.
+
+**Troubleshooting tips:**  
+If data is not received as expected:
+- Double-check WiFi SSIDs and passwords on all devices.
+- Ensure both Raspberry Pi and ESP32 can resolve the broker hostname (e.g., `waldo.local`)—try using direct IP addresses if needed.
+- Confirm topic namings match exactly (MQTT topics are case-sensitive).
