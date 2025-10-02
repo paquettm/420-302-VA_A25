@@ -19,3 +19,6 @@ Activities:
     - Theory: [The Client-Server Communication Model and HTTP](THEORY/Client-Server_and_HTTP.md)
     - Lab 5 : [ESP32 MicroPython Web Server](LABS/LAB5_ESP32_MicroPython_Web_Server.md)
     - Homework : Read the [Term Project definition](Term_Project.md), compose teams and complete your first Term project proposal brainstorming
+- Class 6:
+    - Project discussion
+    - Lab 6: [Telemetry with ESP32, MQTT, and Raspberry Pi](LABS/LAB6_Telemetry_with_ESP32_MQTT_and_Raspberry_Pi.md)
