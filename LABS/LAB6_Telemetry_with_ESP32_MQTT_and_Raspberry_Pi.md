@@ -170,9 +170,16 @@ We will then convert this data to the correct units before publishing it, period
 
 ### A. Setup
 
+Make sure that your user is part of the dialout group to allow your user to access the serial port from the Raspberry Pi.
+
+```
+sudo usermod -a -G dialout <username>
+```
+
 On your Raspberry Pi, open Thonny.
 Connect your ESP32 to your Raspberry Pi via USB.
 In Thonny, select the `MicroPython (ESP32)...` option at the bottom right corner of the Thonny application. This will interface with your ESP32 MicroPython environment.
+
 
 ### B. WiFi Connection
 
