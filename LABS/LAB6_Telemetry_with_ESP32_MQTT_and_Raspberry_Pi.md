@@ -10,8 +10,6 @@ You will need
 
 ![ESP32-MQTT-RPi_1](../public/images/ESP32-MQTT-RPi.png)
 
-![ESP32-MQTT-RPi_1](../public/images/ESP32-MQTT-RPi_2.png)
-
 Raspberry Pis are complete single-board computers with sufficient resources to run complex programs and services.
 We will use a RPi to host a Mosquitto MQTT message broker service.
 This message broker service will have the responsibility of receiving telemetry data from our ESP32 and forwarding this data to our Raspberry Pi Python applications, and more devices and programs in the future.
