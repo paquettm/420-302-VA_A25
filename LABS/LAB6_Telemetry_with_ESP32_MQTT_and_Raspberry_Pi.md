@@ -8,7 +8,7 @@ You will need
 
 **System summary:**
 
-![ESP32-MQTT-RPi_1](../public/images/ESP32-MQTT-RPi.png)
+![ESP32-MQTT-RPi_1](../public/images/ESP32-MQTT-RaspberryPi.png)
 
 Raspberry Pis are complete single-board computers with sufficient resources to run complex programs and services.
 We will use a RPi to host a Mosquitto MQTT message broker service.
