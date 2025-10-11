@@ -20,7 +20,7 @@
     "@astrojs/starlight": "^0.35.2",
     "@expressive-code/core": "^0.41.3",
     "@expressive-code/plugin-line-numbers": "^0.41.3",
-    "astro": "^5.13.3",
+    "astro": "^5.14.3",
     "astro-nebula-ui": "^0.4.1",
     "expressive-code-fullscreen": "^1.0.0",
     "fuse.js": "^7.1.0",
