@@ -1,4 +1,4 @@
-# LAB6: Telemetry with ESP32, MQTT, and Raspberry Pi
+# Lab 6: Telemetry with ESP32, MQTT, and Raspberry Pi
 
 In this lab, we will create our first multiple-device IoT application.
 
