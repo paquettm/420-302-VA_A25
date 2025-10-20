@@ -239,6 +239,9 @@ for rule in IoT_Controller.rules:
 
 #### Part E: Trigger Actions
 
+For each rule in our complete set of rules, we may trigger a response if all the conditions are met.
+Therefore, **in the first `for` loop body**, we need code that will check on the status of the condition(s) evaluation and trigger the corresponding response:
+
 ```python
 if conditions_met:
     action = rule["action"]
