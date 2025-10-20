@@ -514,8 +514,9 @@ brew services start mosquitto   # macOS
 **Error:** `ModuleNotFoundError: No module named 'paho'`
 
 **Solution:** Install the library:
+**With the virtual environment activated**, run the following command:
 ```bash
-pip3 install paho-mqtt
+pip install paho-mqtt
 ```
 
 ### Issue 3: Rules File Not Found
