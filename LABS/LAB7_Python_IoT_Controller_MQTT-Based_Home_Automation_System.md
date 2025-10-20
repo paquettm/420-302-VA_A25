@@ -316,7 +316,8 @@ if __name__ == "__main__":
 
 ## Creating the Rules Configuration File
 
-Create a file named `rules.json` in the same directory:
+Create a file named `rules.json` in the same directory.
+In Thonny, this can be done by right-clicking in the Files pane and selecting `New file...` and providing the `rules.json` file name before clicking `OK`.
 
 ```json
 [
