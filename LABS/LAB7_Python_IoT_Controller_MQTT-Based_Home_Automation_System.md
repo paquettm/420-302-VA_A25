@@ -99,7 +99,7 @@ Once Thonny has started, we will activate the virtal environment, in Thonny:
 - Use the file system navigator to change paths in the file system to your project base path, e.g., `/home/username/IoT_Controller/`
 - You should now see a folder name with your virtual environment name, e.g., `venv`. Right click on this name and you should see a context menu appear with the option to `Activate virtual environment`... click this.
 
-The virtual environment should now be activated and you could confirm this by seeing that, at the bottom right corner of your Thonny window, you can read **Local Python 3 &middot /home/username/IoT_Controller/venv/bin/python3**
+The virtual environment should now be activated and you could confirm this by seeing that, at the bottom right corner of your Thonny window, you can read **Local Python 3 · /home/username/IoT_Controller/venv/bin/python3**
   
 ### Step 1: Import Required Libraries
 
