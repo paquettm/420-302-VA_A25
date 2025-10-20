@@ -384,32 +384,40 @@ In Thonny, this can be done by right-clicking in the Files pane and selecting `N
 
 ## Testing the Application
 
-### Terminal 1: Start the Controller
+### Start the Controller
+
+You can run the code from Thonny or from a terminal window.
+From Thonny, click the "green circular play button".
+
+From the terminal window, type the following at the command line if your program is saved as `iot_controller.py`
 
 ```bash
 python3 iot_controller.py
 ```
+### Monitor All Messages
 
-### Terminal 2: Simulate Temperature Sensor
+In a terminal window (you can open as many as you need each with the CTRL-ALT-T key combination), enter the following command to monitor all messages sent by your local Mosquitto message broker:
+```bash
+mosquitto_sub -h localhost -t "#" -v
+```
+This will show all MQTT traffic including controller actions.
+
+### Simulate Temperature Sensor
+
+In another terminal window (CTRL-ALT-T to open), enter the following command to send a message to the "house/temp" topic of your local Mosquitto message broker:
 
 ```bash
 mosquitto_pub -h localhost -t "house/temp" -m "32"
 ```
 
-**Expected output in Terminal 1:**
+**Expected Python program output:**
+
+If you followed all instructions, your python IoT Controller should output the following text:
 ```
 house/temp 32.0
 It's too hot, turn on the AC
 room/AC on
 ```
-
-### Terminal 3: Monitor All Messages
-
-```bash
-mosquitto_sub -h localhost -t "#" -v
-```
-
-This shows all MQTT traffic including controller actions.
 
 ### Test Multiple Conditions
 
