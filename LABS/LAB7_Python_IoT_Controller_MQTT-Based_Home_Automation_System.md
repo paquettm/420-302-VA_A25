@@ -27,6 +27,16 @@ mkdir IoT_Controller
 cd IoT_Controller
 ```
 
+To know the complete path to your current project directory (folder), still in your RPi's command-line environment enter the following command:
+```bash
+pwd
+```
+It should output something like
+```bash
+/home/username/IoT_Controller
+```
+Pay attention to this path and try to remember it for later.
+
 Create a virtual environment and then activate it
 ```bash
 python -m venv venv
@@ -64,11 +74,33 @@ Our program will have the following components:
 
 To start coding, you probably want to start Thonny and load up our new virtual environment.
 
-************************************************************************************************
+If you want to use the package manager feature in Thonny, you may have to upgrade to the latest version.
+For more information and instructions, see [Installing Thonny on Raspberry Pi](Installing_Thonny_on_RPi.md).
 
+### Setup: Starting Thonny and Activating the Virtual Environment
 
-************************************************************************************************
+Regardless if you use the package manager in Thonny or not, you must activate the virtual environment that stores the packages you wish to use in your program.
 
+To recall the complete path to your current project directory (folder), still in your RPi's command-line environment enter the following command:
+```bash
+pwd
+```
+It should output something like
+```bash
+/home/username/IoT_Controller
+```
+If this is not the case, try to recall the path from earlier and move to it using the cd command at the command line.
+
+To start Thonny, either enter the `thonny` command at the command line or click on the Raspberry start menu at the top left of your screen, and find `Thonny` under the `Programming` category.
+
+Once Thonny has started, we will activate the virtal environment, in Thonny:
+- If you don't see the `File`, `Edit`, `View`, `Run`, `Tools`, and `Help` top menus, your Thonny interface is in simple mode. To switch to regular mode, click on the link at Thonny's top right corner that says `Switch to regular mode`, then click `OK`, close Thonny and start Thonny again. You should now see the menu options. 
+- Click `View` and make sure that `Files` is ckecked. You should see a `Files` pane with a file system navigator window on the left side of Thonny.
+- Use the file system navigator to change paths in the file system to your project base path, e.g., `/home/username/IoT_Controller/`
+- You should now see a folder name with your virtual environment name, e.g., `venv`. Right click on this name and you should see a context menu appear with the option to `Activate virtual environment`... click this.
+
+The virtual environment should now be activated and you could confirm this by seeing that, at the bottom right corner of your Thonny window, you can read **Local Python 3 &middot /home/username/IoT_Controller/venv/bin/python3**
+  
 ### Step 1: Import Required Libraries
 
 ```python
