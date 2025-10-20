@@ -22,3 +22,5 @@ Activities:
 - Class 6:
     - Project discussion
     - Lab 6: [Telemetry with ESP32, MQTT, and Raspberry Pi](LABS/LAB6_Telemetry_with_ESP32_MQTT_and_Raspberry_Pi.md)
+- Class 7:
+    - Lab 7: [Python IoT Controller: MQTT-Based Home Automation System](LABS/LAB7_Python_IoT_Controller_MQTT-Based_Home_Automation_System.md)
