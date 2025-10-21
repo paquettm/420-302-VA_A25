@@ -12,13 +12,13 @@ importers:
         specifier: ^0.9.4
         version: 0.9.4(prettier@3.6.2)(typescript@5.9.2)
       '@astrojs/markdown-remark':
-        specifier: ^6.3.7
+        specifier: ^6.3.6
         version: 6.3.7
       '@astrojs/mdx':
-        specifier: ^4.3.6
+        specifier: ^4.3.4
         version: 4.3.6(astro@5.13.10(@types/node@24.5.2)(rollup@4.52.0)(typescript@5.9.2)(yaml@2.8.1))
       '@astrojs/starlight':
-        specifier: ^0.35.3
+        specifier: ^0.35.2
         version: 0.35.3(astro@5.13.10(@types/node@24.5.2)(rollup@4.52.0)(typescript@5.9.2)(yaml@2.8.1))
       '@expressive-code/core':
         specifier: ^0.41.3
@@ -27,10 +27,10 @@ importers:
         specifier: ^0.41.3
         version: 0.41.3
       astro:
-        specifier: ^5.13.10
+        specifier: ^5.13.3
         version: 5.13.10(@types/node@24.5.2)(rollup@4.52.0)(typescript@5.9.2)(yaml@2.8.1)
       astro-nebula-ui:
-        specifier: ^0.4.2
+        specifier: ^0.4.1
         version: 0.4.2(astro@5.13.10(@types/node@24.5.2)(rollup@4.52.0)(typescript@5.9.2)(yaml@2.8.1))
       expressive-code-fullscreen:
         specifier: ^1.0.0
@@ -57,19 +57,19 @@ importers:
         specifier: ^9.0.0
         version: 9.0.0
       sharp:
-        specifier: ^0.34.4
+        specifier: ^0.34.3
         version: 0.34.4
       starlight-image-zoom:
         specifier: ^0.13.0
         version: 0.13.0(@astrojs/starlight@0.35.3(astro@5.13.10(@types/node@24.5.2)(rollup@4.52.0)(typescript@5.9.2)(yaml@2.8.1)))
       starlight-links-validator:
-        specifier: ^0.17.2
+        specifier: ^0.17.1
         version: 0.17.2(@astrojs/starlight@0.35.3(astro@5.13.10(@types/node@24.5.2)(rollup@4.52.0)(typescript@5.9.2)(yaml@2.8.1)))
       starlight-scroll-to-top:
         specifier: ^0.3.1
         version: 0.3.1(@astrojs/starlight@0.35.3(astro@5.13.10(@types/node@24.5.2)(rollup@4.52.0)(typescript@5.9.2)(yaml@2.8.1)))
       starlight-sidebar-topics:
-        specifier: ^0.6.1
+        specifier: ^0.6.0
         version: 0.6.1(@astrojs/starlight@0.35.3(astro@5.13.10(@types/node@24.5.2)(rollup@4.52.0)(typescript@5.9.2)(yaml@2.8.1)))
       starlight-theme-galaxy:
         specifier: ^0.3.0
@@ -2249,6 +2249,7 @@ packages:
   sitemap@8.0.0:
     resolution: {integrity: sha512-+AbdxhM9kJsHtruUF39bwS/B0Fytw6Fr1o4ZAIAEqA6cke2xcoO2GleBw9Zw7nRzILVEgz7zBM5GiTJjie1G9A==}
     engines: {node: '>=14.0.0', npm: '>=6.0.0'}
+    deprecated: 'SECURITY: Multiple vulnerabilities fixed in 8.0.1 (XML injection, path traversal, command injection, protocol injection). Upgrade immediately: npm install sitemap@8.0.1'
     hasBin: true
 
   smol-toml@1.4.2:
@@ -3543,7 +3544,7 @@ snapshots:
 
   '@types/sax@1.2.7':
     dependencies:
-      '@types/node': 17.0.45
+      '@types/node': 24.5.2
 
   '@types/trusted-types@2.0.7':
     optional: true
