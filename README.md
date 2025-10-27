@@ -24,3 +24,8 @@ Activities:
     - Lab 6: [Telemetry with ESP32, MQTT, and Raspberry Pi](LABS/LAB6_Telemetry_with_ESP32_MQTT_and_Raspberry_Pi.md)
 - Class 7:
     - Lab 7: [Python IoT Controller: MQTT-Based Home Automation System](LABS/LAB7_Python_IoT_Controller_MQTT-Based_Home_Automation_System.md)
+- Class 8:
+    - Lab 7: [Python IoT Controller: MQTT-Based Home Automation System](LABS/LAB7_Python_IoT_Controller_MQTT-Based_Home_Automation_System.md) CONTINUED... We previously implemented simple rule execution and needed to add mechanisms for composite rule execution as well as message logging and filtering to avoid infinite looping.
+    
+Shorter exercise to complete class 8 or later as apppropriate:
+-Lab 8: [Python IoT Historian: Logging MQTT Data to SQLite](LABS/LAB8_Python_IoT_Historian_Logging_MQTT_Data_to_SQLite.md)
