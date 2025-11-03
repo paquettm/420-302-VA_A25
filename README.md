@@ -26,6 +26,7 @@ Activities:
     - Lab 7: [Python IoT Controller: MQTT-Based Home Automation System](LABS/LAB7_Python_IoT_Controller_MQTT-Based_Home_Automation_System.md)
 - Class 8:
     - Lab 7: [Python IoT Controller: MQTT-Based Home Automation System](LABS/LAB7_Python_IoT_Controller_MQTT-Based_Home_Automation_System.md) CONTINUED... We previously implemented simple rule execution and needed to add mechanisms for composite rule execution as well as message logging and filtering to avoid infinite looping.
-    
-Shorter exercise to complete class 8 or later as apppropriate:
--Lab 8: [Python IoT Historian: Logging MQTT Data to SQLite](LABS/LAB8_Python_IoT_Historian_Logging_MQTT_Data_to_SQLite.md)
+    -Lab 8: [Python IoT Historian: Logging MQTT Data to SQLite](LABS/LAB8_Python_IoT_Historian_Logging_MQTT_Data_to_SQLite.md)
+- Class 9:
+    - Lab 8 continued
+    - Lab 9: [Python Flask Interactive Web MQTT Data Visualization Dashboard](LABS/LAB9_Python_Flask_Interactive_Web_MQTT_Data_Visualization_Dashboard.md)
