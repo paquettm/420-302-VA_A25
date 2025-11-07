@@ -738,14 +738,6 @@ else:
     trace = go.Scatter(x=timestamps, y=values, mode='lines+markers', name=topic)
 ```
 
-### 6. **Real-Time Updates with WebSockets**
-
-For advanced applications, use Flask-SocketIO to push updates without page refresh:
-
-```bash
-pip install flask-socketio
-```
-
 ***
 
 ## Production Considerations
