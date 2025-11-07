@@ -30,3 +30,5 @@ Activities:
 - Class 9:
     - Lab 8 continued
     - Lab 9: [Python Flask Interactive Web MQTT Data Visualization Dashboard](LABS/LAB9_Python_Flask_Interactive_Web_MQTT_Data_Visualization_Dashboard.md)
+
+[Assignment 2](ASSIGNMENTS/Assignment2_Python_Basic_Review.md) published 2025-11-07, due December 11, 11:55PM.
