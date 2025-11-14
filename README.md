@@ -38,25 +38,16 @@ Activities:
 
 - Class 8 (October 27):
     - Lab 7: [Python IoT Controller: MQTT-Based Home Automation System](LABS/LAB7_Python_IoT_Controller_MQTT-Based_Home_Automation_System.md) CONTINUED... We previously implemented simple rule execution and needed to add mechanisms for composite rule execution as well as message logging and filtering to avoid infinite looping.
-<<<<<<< HEAD
     -Lab 8: [Python IoT Historian: Logging MQTT Data to SQLite](LABS/LAB8_Python_IoT_Historian_Logging_MQTT_Data_to_SQLite.md)
 
 - Class 9 (November 3):
-=======
-    - Lab 8: [Python IoT Historian: Logging MQTT Data to SQLite](LABS/LAB8_Python_IoT_Historian_Logging_MQTT_Data_to_SQLite.md)
-- Class 9:
->>>>>>> 70c91c7536a45cbf387539a56377f930954f15b6
     - Lab 8 continued
     - Lab 9: [Python Flask Interactive Web MQTT Data Visualization Dashboard](LABS/LAB9_Python_Flask_Interactive_Web_MQTT_Data_Visualization_Dashboard.md)
 
 - November 7: Distribution of [Assignment 2](ASSIGNMENTS/Assignment2_Python_Basic_Review.msd1)
     - due December 11, 11:55PM.
 
-<<<<<<< HEAD
 - Class 10 (November 10):
-=======
-- Class 10:
->>>>>>> 70c91c7536a45cbf387539a56377f930954f15b6
     - Lab 10: [Access Control for Python Flask IoT Dashboard](LABS/LAB10_Access_Control_for_Python_Flask_IoT_Dashboard)
     - Work on [Assignment 2](ASSIGNMENTS/Assignment2_Python_Basic_Review.msd1) as time permits
 
