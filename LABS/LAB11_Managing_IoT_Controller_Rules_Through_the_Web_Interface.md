@@ -793,18 +793,41 @@ Create `templates/rule_delete.html`:
 
 ## Step 6: Update Navigation in base.html
 
-Update your `templates/base.html` navigation section:
+`templates/base.html` should look something like this:
 
 ```html
-<nav>
-    <ul>
-        <li><a href="{{ url_for('plot_data') }}">Dashboard</a></li>
-        <li><a href="{{ url_for('list_rules') }}">Manage Rules</a></li>
-        {% if current_user.is_authenticated %}
-            <li style="margin-left: auto;"><a href="{{ url_for('logout') }}">Logout ({{ current_user.id }})</a></li>
-        {% endif %}
-    </ul>
-</nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}IoT Dashboard{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('plot_data') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('list_rules') }}">Manage Rules</a></li>
+            {% if current_user.is_authenticated %}
+                <li style="margin-left: auto;"><a href="{{ url_for('logout') }}">Logout ({{ current_user.id }})</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
 ```
 
 #### Explanation:
