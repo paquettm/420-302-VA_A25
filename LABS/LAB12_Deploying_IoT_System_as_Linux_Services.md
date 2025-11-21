@@ -591,7 +591,7 @@ def reload_controller():
         if response.status_code == 200:
             flash('IoT Controller rules reloaded successfully!', 'success')
             return redirect(url_for('list_rules'))
-    except requests.exceptions.ConnectionRefused:
+    except requests.exceptions.ConnectionError:
         pass  # Fall through to signal method
     except requests.exceptions.Timeout:
         pass  # Fall through to signal method
@@ -711,7 +711,7 @@ Create `templates/system_status.html`:
 }
 ```
 
-**Update `templates/base.html` navigation:**
+**Update the navigation section in `templates/base.html`:**
 
 ```html
 <nav>
@@ -780,6 +780,9 @@ cd ~/IoT_Controller
 source venv/bin/activate
 python3 app.py
 ```
+
+You probably have to install **requests** to the virtual environment... How do you do this?
+
 
 **Visit in browser:**
 - `http://localhost:5000/system/status`
