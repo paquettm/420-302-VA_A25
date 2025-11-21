@@ -23,11 +23,13 @@ Activities:
     - Questions on Intro to Python in Context from last class
     - Theory: [The Client-Server Communication Model and HTTP](THEORY/Client-Server_and_HTTP.md)
     - Lab 5 : [ESP32 MicroPython Web Server](LABS/LAB5_ESP32_MicroPython_Web_Server.md)
-    - Homework : Read the [Term Project definition](Term_Project.md), compose teams and complete your first Term project proposal brainstorming
+    - *Term Project:* Homework : Read the [Term Project definition](Term_Project.md), compose teams and complete your first Term project proposal brainstorming
 
 - Class 6 (October 6):
-    - Project discussion
+    - *Term Project:* Project Kickoff - Introduction to the project and discussion of project guidelines; **start coding the Python IoT Controller framework**.
     - Lab 6: [Telemetry with ESP32, MQTT, and Raspberry Pi](LABS/LAB6_Telemetry_with_ESP32_MQTT_and_Raspberry_Pi.md)
+
+- October 10: *Term Project:* **Deliverable 1:** Project Proposal and Basic System Schematic - Students should complete their project proposal, including a schematic representation of the system's interconnections, and obtain teacher approval.
 
 - October 13: Thanksgiving, no classes
 
@@ -39,6 +41,10 @@ Activities:
 - Class 8 (October 27):
     - Lab 7: [Python IoT Controller: MQTT-Based Home Automation System](LABS/LAB7_Python_IoT_Controller_MQTT-Based_Home_Automation_System.md) CONTINUED... We previously implemented simple rule execution and needed to add mechanisms for composite rule execution as well as message logging and filtering to avoid infinite looping.
     -Lab 8: [Python IoT Historian: Logging MQTT Data to SQLite](LABS/LAB8_Python_IoT_Historian_Logging_MQTT_Data_to_SQLite.md)
+    - *Term Project:* **Deliverable 2:** System Analysis - Teams should provide a detailed analysis of the system's requirements, stating:
+        - which applications will handle which tasks
+        - which conditions will lead to which results
+        - etc.
 
 - Class 9 (November 3):
     - Lab 8 continued
@@ -50,13 +56,16 @@ Activities:
 - Class 10 (November 10):
     - Lab 10: [Access Control for Python Flask IoT Dashboard](LABS/LAB10_Access_Control_for_Python_Flask_IoT_Dashboard)
     - Work on [Assignment 2](ASSIGNMENTS/Assignment2_Python_Basic_Review.msd1) as time permits
+    - *Term Project:* **Deliverable 3:** Algorithm Development - Present pseudocode outlining the system's operation.
 
 - Class 11 (November 17):
     - Lab 11: [Managing IoT Controller Rules Through the Web Interface](LABS/LAB11_Managing_IoT_Controller_Rules_Through_the_Web_Interface.md)
 
 - Class 12 (November 24):
     - Lab 12: Service Configuration and Signals Between Applications
+    - *Term Project:* **Deliverable 4:** 50% Implementation Checkpoint - Teams should demonstrate 50% completion of the project.
 
 - Class 13 (December 1): Project debugging lab
 
 - Class 14 (December 8): Project presentations
+    - *Term Project:* **Deliverable 5:** 100% Implementation Demonstration - Teams should demonstrate the completed project. This will be the final project presentation.
