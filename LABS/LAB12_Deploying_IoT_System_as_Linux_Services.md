@@ -867,12 +867,30 @@ sudo mkdir -p /var/lib/iot_system
 ```bash
 # Copy your project files
 sudo cp -r ~/IoT_Controller/* /opt/iot_system/
+```
+Note that in this lab we consider the development folder for the IoT system to be `~/IoT_Controller` with `~` referring to your user's home directory.
 
-# Create virtual environment in production location
+```bash
+# Move to the production location
 cd /opt/iot_system
+```
+
+You should be able to see in your command prompt that you are currently located in the `/opt/iot_system` folder. 
+
+This is the directory we created for the production system.
+If you followed all steps correctly, then you should be able to see the `venv` virtual environment folder in this location when typing `ls` at the command line.
+
+Sadly, this virtual environment has references to the development folder, and we don't want that, in case we ever deleted or moved the development folder... so we will remove it as follows:
+```bash
+sudo rm -rf venv
+```
+
+Let's create a new virtual environment for our production system.
+```bash
+# Create virtual environment in production location
 sudo python3 -m venv venv
 
-# Activate it and install dependencies
+# Install dependencies
 sudo venv/bin/pip install paho-mqtt flask plotly flask-login werkzeug requests
 ```
 
@@ -896,6 +914,11 @@ sudo venv/bin/pip install paho-mqtt flask plotly flask-login werkzeug requests
 
 **Edit `/opt/iot_system/historian.py`:**
 
+You must use nano with superuser privileges as follows:
+```bash
+sudo nano historian.py
+```
+
 ```python
 # Update these lines:
 DB_FILE = "/var/lib/iot_system/historian_data.db"
@@ -903,7 +926,14 @@ PID_FILE = "/var/lib/iot_system/historian.pid"
 HEARTBEAT_FILE = "/var/lib/iot_system/historian.heartbeat"
 ```
 
+Save by pressing `CTRL+O` and exit by pressing `CTRL+X`.
+
 **Edit `/opt/iot_system/iot_controller.py`:**
+
+You must again use nano with superuser privileges in this path because of its ownership, as follows:
+```bash
+sudo nano iot_controller.py
+```
 
 ```python
 # Update these lines:
@@ -913,7 +943,14 @@ HEARTBEAT_FILE = "/var/lib/iot_system/controller.heartbeat"
 HISTORIAN_HEARTBEAT = "/var/lib/iot_system/historian.heartbeat"
 ```
 
+Save by pressing `CTRL+O` and exit by pressing `CTRL+X`.
+
 **Edit `/opt/iot_system/app.py`:**
+
+You must again use ____ with _________ privileges in this path because of its ownership, as follows:
+```bash
+____ ____ ___.__
+```
 
 ```python
 # Update these lines near the top:
@@ -951,11 +988,6 @@ sudo chown -R iotuser:iotuser /var/lib/iot_system
 # Set directory permissions
 sudo chmod 755 /opt/iot_system
 sudo chmod 755 /var/lib/iot_system
-
-# Make Python scripts executable
-sudo chmod +x /opt/iot_system/historian.py
-sudo chmod +x /opt/iot_system/iot_controller.py
-sudo chmod +x /opt/iot_system/app.py
 ```
 
 #### Explanation:
@@ -976,8 +1008,6 @@ sudo chmod +x /opt/iot_system/app.py
 **Why these permissions?**
 - `iotuser` needs to read/write its own files
 - Other users can read but not modify (safer)
-- Execute permission needed to run scripts and enter directories
-
 ---
 
 ## Part 4: Create systemd Service Files
@@ -991,6 +1021,9 @@ sudo nano /etc/systemd/system/iot-historian.service
 ```
 
 **Contents:**
+
+Below notice the `Documentation` entry. You should custoimize this to your own repository.
+This should be done for all service files.
 
 ```ini
 [Unit]
@@ -1285,6 +1318,8 @@ Nov 19 14:30:00 raspberrypi python3[12345]: Historian connected to localhost:188
 - **Memory/CPU**: Resource usage
 - **Recent log lines**: Last few messages from service
 
+To leave this view, type the following: `:q`.
+
 **If status shows errors, check:**
 ```bash
 journalctl -u iot-historian.service -n 50
@@ -1302,7 +1337,7 @@ sudo systemctl status iot-historian.service
 sudo systemctl status iot-controller.service
 sudo systemctl status iot-webapp.service
 ```
-
+To leave each of these views, type the following: `:q`.
 All three should show `Active: active (running)`.
 
 ### Test 2: Check Health Monitoring
@@ -1335,6 +1370,8 @@ sqlite3 /var/lib/iot_system/historian_data.db "SELECT * FROM historian_data ORDE
 
 ### Test 4: Test Rules Reload
 
+**Note: If the following fails, it is because the database does not exist. To fix this, publish a message to MQTT and the historian will create the entry in the historian_data table.**
+
 1. Log into web interface: `http://localhost:5000`
 2. Navigate to "Manage Rules"
 3. Create or edit a rule
@@ -1362,11 +1399,14 @@ Service should show `Active: active (running)` - it auto-restarted!
 
 ### Test 6: Test Boot Persistence
 
-```bash
-# Reboot the Pi
-sudo reboot
+Reboot the Pi.
 
-# After reboot, check services
+```bash
+sudo reboot
+```
+
+After reboot, check the services:
+```bash
 sudo systemctl status iot-historian.service
 sudo systemctl status iot-controller.service
 sudo systemctl status iot-webapp.service
@@ -1536,33 +1576,33 @@ sqlite3 /var/lib/iot_system/historian_data.db "SELECT COUNT(*) FROM historian_da
 ### System Architecture
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│                    Raspberry Pi                         │
-│                                                         │
-│  ┌──────────────┐      ┌──────────────┐               │
-│  │   Mosquitto  │◄────►│  Historian   │               │
-│  │  MQTT Broker │      │   Service    │               │
-│  └──────────────┘      └──────┬───────┘               │
-│         ▲                     │                        │
-│         │                     ▼                        │
-│         │              ┌──────────────┐               │
-│         │              │  SQLite DB   │               │
-│         │              └──────────────┘               │
-│         │                                              │
-│         │              ┌──────────────┐               │
-│         └─────────────►│ IoT Controller│              │
-│                        │   Service     │               │
-│                        └──────┬────────┘               │
-│                              │                         │
-│                        HTTP  │  Heartbeat              │
-│                        5001  │  Files                  │
-│                              │                         │
-│                        ┌─────▼─────────┐              │
-│                        │   Web App     │              │
-│                        │   Service     │              │
-│                        └───────────────┘               │
-│                             │ :5000                     │
-└─────────────────────────────┼───────────────────────────┘
+┌──────────────────────────────────────────────────────┐
+│                    Raspberry Pi                      │
+│                                                      │
+│  ┌──────────────┐      ┌──────────────┐              │
+│  │   Mosquitto  │◄────►│  Historian   │              │
+│  │  MQTT Broker │      │   Service    │              │
+│  └──────────────┘      └──────┬───────┘              │
+│         ▲                     │                      │
+│         │                     ▼                      │
+│         │              ┌──────────────┐              │
+│         │        ┌────►│  SQLite DB   │              │
+│         │        │     └──────────────┘              │
+│         │        │                                   │
+│         │        │     ┌──────────────┐              │
+│         └─────────────►│IoT Controller│              │
+│                  │     │  Service     │              │
+│                  │     └─────┬────────┘              │
+│                  │           │                       │
+│                  │     HTTP  │  Heartbeat            │
+│                  │     5001  │  Files                │
+│                  │           │                       │
+│                  │     ┌─────▼─────────┐             │
+│                  └────►│   Web App     │             │
+│                        │   Service     │             │
+│                        └───────────────┘             │
+│                             │ :5000                  │
+└─────────────────────────────┼────────────────────────┘
                               │
                          ┌────▼────┐
                          │ Browser │
@@ -1621,18 +1661,18 @@ sqlite3 /var/lib/iot_system/historian_data.db "SELECT COUNT(*) FROM historian_da
 
 ## Summary
 
-You've successfully deployed a **production-grade IoT system** with:
+You've successfully deployed an IoT system using some **production-grade** practices with:
 
-✅ **Three cooperating services** running as background daemons  
-✅ **Automatic startup** on boot  
-✅ **Auto-restart** on crashes  
-✅ **Health monitoring** via heartbeat files  
-✅ **User-triggered reload** via HTTP endpoint  
-✅ **Inter-service communication** via HTTP and health checks  
-✅ **Centralized logging** with systemd journal  
-✅ **Security hardening** with dedicated non-login user  
-✅ **Virtual environment deployment** for Python dependencies  
-✅ **Professional deployment practices** following Linux standards  
+- **Three cooperating services** running as background daemons  
+- **Automatic startup** on boot  
+- **Auto-restart** on crashes  
+- **Health monitoring** via heartbeat files  
+- **User-triggered reload** via HTTP endpoint  
+- **Inter-service communication** via HTTP and health checks  
+- **Centralized logging** with systemd journal  
+- **Light Security hardening** with dedicated non-login user  
+- **Virtual environment deployment** for Python dependencies  
+- **Deployment practices** following Linux standards  
 
 **Skills learned:**
 - systemd service creation and management
@@ -1643,4 +1683,4 @@ You've successfully deployed a **production-grade IoT system** with:
 - Production deployment workflows
 - Service debugging with journalctl
 
-This is how real industrial IoT systems, web services, and enterprise applications are deployed in production Linux environments. You now have experience with professional deployment practices used in industry.
+This is similar to how real industrial IoT systems, web services, and enterprise applications are deployed in production Linux environments. You now have experience with professional deployment practices used in industry.

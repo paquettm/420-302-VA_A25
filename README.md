@@ -62,7 +62,7 @@ Activities:
     - Lab 11: [Managing IoT Controller Rules Through the Web Interface](LABS/LAB11_Managing_IoT_Controller_Rules_Through_the_Web_Interface.md)
 
 - Class 12 (November 24):
-    - Lab 12: Service Configuration and Signals Between Applications
+    - Lab 12: [Production Deployment - Running IoT Services as Linux System Services](LABS/LAB12_Deploying_IoT_System_as_Linux_Services.md)
     - *Term Project:* **Deliverable 4:** 50% Implementation Checkpoint - Teams should demonstrate 50% completion of the project.
 
 - Class 13 (December 1): Project debugging lab
