@@ -419,7 +419,7 @@ def signal_handler(signum, frame):
         e = IoT_Controller.load_rules()
         if e == None:
             print(f"✓ Rules reloaded ({len(IoT_Controller.rules)} rules)")
-        except Exception as e:
+        else:
             print(f"✗ Error reloading rules: {e}")
             
     elif signum == signal.SIGTERM or signum == signal.SIGINT:
