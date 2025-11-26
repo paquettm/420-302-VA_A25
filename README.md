@@ -65,6 +65,8 @@ Activities:
     - Lab 12: [Production Deployment - Running IoT Services as Linux System Services](LABS/LAB12_Deploying_IoT_System_as_Linux_Services.md)
     - *Term Project:* **Deliverable 4:** 50% Implementation Checkpoint - Teams should demonstrate 50% completion of the project.
 
+November 26: Published [HOW-TO: MQTT to SMS Relay Service](LABS/HOWTO_MQTT_to_SMS_Relay_Service.md) for information purposes. If you were to use this program, consider building a service file and enabling it to provide these services on bootup.
+
 - Class 13 (December 1): Project debugging lab
 
 - Class 14 (December 8): Project presentations
