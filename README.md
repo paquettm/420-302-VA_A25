@@ -67,6 +67,8 @@ Activities:
 
 November 26: Published [HOW-TO: MQTT to SMS Relay Service](LABS/HOWTO_MQTT_to_SMS_Relay_Service.md) for information purposes. If you were to use this program, consider building a service file and enabling it to provide these services on bootup.
 
+November 27: Published [HOW-TO: Raspberry Pi SSH and VNC Setup and Use](LABS/HOWTO_Raspberry_Pi_SSH_and_VNC_Setup_and_Use.md) to show how to set up a connection from your laptop to your Raspberry Pi avoiding the need for extra keyboard, mouse and screen.
+
 - Class 13 (December 1): Project debugging lab
 
 - Class 14 (December 8): Project presentations
