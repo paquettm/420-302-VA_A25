@@ -1,3 +1,11 @@
+---
+title: 'Lab 6: Telemetry with ESP32, MQTT, and Raspberry Pi'
+description: 'Lab 6: Telemetry with ESP32, MQTT, and Raspberry Pi'
+sidebar:
+  label: 'Lab 6: Telemetry with ESP32, MQTT, and Raspberry Pi'
+  order: 6
+---
+
 # Lab 6: Telemetry with ESP32, MQTT, and Raspberry Pi
 
 In this lab, we will create our first multiple-device IoT application.
@@ -8,7 +16,7 @@ You will need
 
 **System summary:**
 
-![ESP32-MQTT-RPi_1](../public/images/ESP32-MQTT-RaspberryPi.png)
+![ESP32-MQTT-RPi_1](images/ESP32-MQTT-RaspberryPi.png)
 
 Raspberry Pis are complete single-board computers with sufficient resources to run complex programs and services.
 We will use a RPi to host a Mosquitto MQTT message broker service.
@@ -381,12 +389,12 @@ Here are the explanations of each, with diagrams.
     - `raw = (t_upper << 8) | t_lower` has 2 operations going on:
         - `(t_upper << 8)` moves the bits from the `t_upper` variable 8 positions to the left... effectiely making these the most significant bits
         - then the bit-wise OR operator `|` assembles the higher and lower bits into a single value which will be stored in the `raw` variable
-        ![bitwise](../public/images/shift_and_bitwise_or.png)
+        ![bitwise](images/shift_and_bitwise_or.png)
     - `temp_raw = raw & 0x1FFF` uses the bit-wise AND to remove non-numerical bits from the data, as per the datasheet information. If you AND anything with 0, you get 0. Done bit-by-bit, we can cancel out, or mask, specific bits.
-    ![bitwise_and_mask](../public/images/bitwise_and_mask.png)
+    ![bitwise_and_mask](images/bitwise_and_mask.png)
     - with the same bitwise AND, we can check that a single bit, the twelfth in this case is set to `1` in the instructions
     `temp_raw & 0x1000`
-    ![bitwise_and_condition](../public/images/bitwise_and_condition.png)
+    ![bitwise_and_condition](images/bitwise_and_condition.png)
     Because the number is 0, we know that this is false. It the result were non-zero,it would be true.
     - the operation `temp_raw -= 1 << 13` happens if the 12th bit marked the number as negative. In this case, the special [Twos complement](https://en.wikipedia.org/wiki/Two%27s_complement) operation is often used to encode negative numbers. This provides the benefit of being able to store an extra number representation than you would if you just considered the bit to mean the same for positive and negative numbers.  
     - The final operation, `celsius = temp_raw * 0.0625`, is just scaling by a factor. Each unit of raw temperature is worth `0.0625` degrees celcius, for this sensor.

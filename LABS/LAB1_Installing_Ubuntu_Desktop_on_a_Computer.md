@@ -1,3 +1,11 @@
+---
+title: 'Lab 1: Installing Ubuntu Desktop on a Computer'
+description: 'Lab 1: Installing Ubuntu Desktop on a Computer'
+sidebar:
+  label: 'Lab 1: Installing Ubuntu Desktop on a Computer'
+  order: 1
+---
+
 # Lab 1: Installing Ubuntu Desktop on a Computer
 
 **All material provided by your teacher for this lab must be returned at the end of the class period.**

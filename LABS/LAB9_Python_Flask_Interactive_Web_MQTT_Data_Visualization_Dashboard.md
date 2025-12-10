@@ -1,3 +1,11 @@
+---
+title: 'Lab 9: Python Flask Interactive Web MQTT Data Visualization Dashboard'
+description: 'Lab 9: Python Flask Interactive Web MQTT Data Visualization Dashboard'
+sidebar:
+  label: 'Lab 9: Python Flask Interactive Web MQTT Data Visualization Dashboard'
+  order: 9
+---
+
 # Lab 9: Python Flask Interactive Web MQTT Data Visualization Dashboard
 
 ## Introduction

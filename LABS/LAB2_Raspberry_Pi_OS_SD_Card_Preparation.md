@@ -1,3 +1,11 @@
+---
+title: 'Lab 2: Raspberry Pi OS SD Card Preparation'
+description: 'Lab 2: Raspberry Pi OS SD Card Preparation'
+sidebar:
+  label: 'Lab 2: Raspberry Pi OS SD Card Preparation'
+  order: 2
+---
+
 # Lab 2: Raspberry Pi OS SD Card Preparation
 
 To be able to boot up your Raspberry Pi (RPi), you must have a properly-configured Operating System on its boot medium.

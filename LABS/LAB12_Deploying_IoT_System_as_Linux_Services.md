@@ -1,3 +1,11 @@
+---
+title: 'Lab 12: Production Deployment - Running IoT Services as Linux System Services'
+description: 'Lab 12: Production Deployment - Running IoT Services as Linux System Services'
+sidebar:
+  label: 'Lab 12: Production Deployment - Running IoT Services as Linux System Services'
+  order: 12
+---
+
 # Lab 12: Production Deployment - Running IoT Services as Linux System Services
 
 ## Introduction

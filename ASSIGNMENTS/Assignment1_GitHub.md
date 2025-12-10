@@ -1,3 +1,11 @@
+---
+title: 'Assignment 1: Working with GitHub'
+description: 'Assignment 1: Working with GitHub'
+sidebar:
+  label: 'Assignment 1: Working with GitHub'
+  order: 1
+---
+
 # Assignment 1: Working with GitHub
 
 ## Learning objectives

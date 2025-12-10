@@ -1,3 +1,11 @@
+---
+title: 'HOW-TO: Raspberry Pi SSH and VNC Setup and Use'
+description: 'HOW-TO: Raspberry Pi SSH and VNC Setup and Useashboard'
+sidebar:
+  label: 'HOW-TO: Raspberry Pi SSH and VNC Setup and Use'
+  order: 2
+---
+
 # HOW-TO: Raspberry Pi SSH and VNC Setup and Use
 
 SSH, or Secure SHell, is a connection method allowing registered users to gain access to command line interfaces to their computers.

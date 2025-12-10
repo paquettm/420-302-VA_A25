@@ -1,3 +1,11 @@
+---
+title: 'Lab 11: Managing IoT Controller Rules Through the Web Interface'
+description: 'Lab 11: Managing IoT Controller Rules Through the Web Interface'
+sidebar:
+  label: 'Lab 11: Managing IoT Controller Rules Through the Web Interface'
+  order: 11
+---
+
 # Lab 11: Managing IoT Controller Rules Through the Web Interface
 
 ## Introduction

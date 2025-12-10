@@ -1,4 +1,12 @@
-# Python Basic Review Coding Assignment
+---
+title: 'Assignment 2: Python Basic Review Coding Assignment'
+description: 'Assignment 2: Python Basic Review Coding Assignment'
+sidebar:
+  label: 'Assignment 2: Python Basic Review Coding Assignment'
+  order: 2
+---
+
+# Assignment 2: Python Basic Review Coding Assignment
 
 This assignment is designed according to the structure, topics, and skills introduced in the W3Schools Python tutorial (https://www.w3schools.com/python/). For each question, you must complete a small but important part of the code, focusing on the correct use of structures such as sequence, branching, and repetition. 
 

@@ -1,3 +1,11 @@
+---
+title: 'HOW-TO: MQTT to SMS Relay Service'
+description: 'HOW-TO: MQTT to SMS Relay Service'
+sidebar:
+  label: 'HOW-TO: MQTT to SMS Relay Service'
+  order: 3
+---
+
 # HOW-TO: MQTT to SMS Relay Service
 
 This supplemental activity teaches students how to build a standalone program that listens to MQTT messages and relays them as SMS notifications via email-to-SMS gateways.

@@ -1,3 +1,11 @@
+---
+title: 'Lab 10: Access Control for Python Flask IoT Dashboard'
+description: 'Lab 10: Access Control for Python Flask IoT Dashboard'
+sidebar:
+  label: 'Lab 10: Access Control for Python Flask IoT Dashboard'
+  order: 10
+---
+
 # Lab 10: Access Control for Python Flask IoT Dashboard
 
 ## Introduction

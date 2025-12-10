@@ -1,3 +1,11 @@
+---
+title: 'Lab 7: Python IoT Controller: MQTT-Based Home Automation System'
+description: 'Lab 7: Python IoT Controller: MQTT-Based Home Automation System'
+sidebar:
+  label: 'Lab 7: Python IoT Controller: MQTT-Based Home Automation System'
+  order: 7
+---
+
 # Lab 7: Python IoT Controller: MQTT-Based Home Automation System
 
 ## Introduction

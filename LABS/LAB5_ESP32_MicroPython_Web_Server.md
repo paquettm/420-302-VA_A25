@@ -1,3 +1,11 @@
+---
+title: 'Lab 5: ESP32 MicroPython Web Server'
+description: 'Lab 5: ESP32 MicroPython Web Server'
+sidebar:
+  label: 'Lab 5: ESP32 MicroPython Web Server'
+  order: 5
+---
+
 # Lab 5: ESP32 MicroPython Web Server
 
 This tutorial is inspired by a blog post on [Hosting a WebSite on a Disposable Vape

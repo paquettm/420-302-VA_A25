@@ -1,3 +1,11 @@
+---
+title: 'Lab 8: Python IoT Historian: Logging MQTT Data to SQLite'
+description: 'Lab 8: Python IoT Historian: Logging MQTT Data to SQLite'
+sidebar:
+  label: 'Lab 8: Python IoT Historian: Logging MQTT Data to SQLite'
+  order: 8
+---
+
 # Lab 8: Python IoT Historian: Logging MQTT Data to SQLite
 
 ## Introduction

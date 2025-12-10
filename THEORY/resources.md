@@ -1,0 +1,17 @@
+---
+title: 'External resources'
+description: 'External resources'
+sidebar:
+  label: 'External resources'
+  order: 2
+---
+
+:::tip
+Please visit this page on a regular basis to get the latest updates and resources.
+:::
+
+
+## Resources
+
+- [Python Documentation](https://docs.python.org/3/)
+- [Python Tutorial](https://docs.python.org/3/tutorial/index.html)

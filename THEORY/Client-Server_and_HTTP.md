@@ -1,3 +1,11 @@
+---
+title: 'The Client-Server Communication Model and HTTP'
+description: 'The Client-Server Communication Model and HTTP'
+sidebar:
+  label: 'The Client-Server Communication Model and HTTP'
+  order: 1
+---
+
 # The Client-Server Communication Model and HTTP
 
 The client-server communication model is a foundational concept in networked computing, where a client (such as a web browser) requests services or resources from a server (such as a web server), and the server processes these requests and sends back a response.
