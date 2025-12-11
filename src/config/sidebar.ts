@@ -2,26 +2,26 @@ export default [
   {
     label: "Guides",
     autogenerate: {
-      directory: "guidesym",
+      directory: "guides",
     },
   },
   {
     label: "Labs",
     autogenerate: {
 //      directory: "labs",
-      directory: "labsym",
+      directory: "labs",
     },
   },
   {
     label: "Assignments",
     autogenerate: {
-      directory: "assignmentsym",
+      directory: "assignments",
     },
   },
   {
     label: "Theory",
     autogenerate: {
-      directory: "theorysym",
+      directory: "theory",
     },
   },
 ] as const;
