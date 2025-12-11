@@ -13,11 +13,11 @@ Activities:
     - Assignment 1: GitHub distribution
 
 - Class 3 (September 15):
-    - Lab 3: [Python Web Application](https://github.com/paquettm/todo-python-flask-app)
+    - Lab 3: [Python Web Application](https://github.com/paquettm/420-302-VA_A25/blob/main/LABS/LAB3_REF.md)
 
 - Class 4 (September 22):
     - Questions about the Python Web Application from last class
-    - Lab 4: Activity of the Raspberry Pi: [Intro to Python in Context - Variables, Function, Classes, Objects, Lists, Libraries, GPIO](https://github.com/paquettm/Python_GPIO_Binary_Counter)
+    - Lab 4: Activity of the Raspberry Pi: [Intro to Python in Context - Variables, Function, Classes, Objects, Lists, Libraries, GPIO](https://github.com/paquettm/420-302-VA_A25/blob/main/LABS/LAB4_REF.md)
 
 - Class 5 (September 29):
     - Questions on Intro to Python in Context from last class
