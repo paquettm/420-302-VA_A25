@@ -3,7 +3,7 @@ title: 'HOW-TO: MQTT to SMS Relay Service'
 description: 'HOW-TO: MQTT to SMS Relay Service'
 sidebar:
   label: 'HOW-TO: MQTT to SMS Relay Service'
-  order: 3
+  order: 5
 ---
 
 # HOW-TO: MQTT to SMS Relay Service

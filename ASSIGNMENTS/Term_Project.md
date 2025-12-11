@@ -1,6 +1,14 @@
+---
+title: 'Term Project'
+description: 'Term Project'
+sidebar:
+  label: 'Term Project'
+  order: 2
+---
+
 # Project Statement: Learning Integration Assessment - Raspberry Pi/Arduino/MQTT-based IoT System
 
-![Schematic](public/images/IoT_System.png "Schematic")
+![Schematic](images/IoT_System.png "Schematic")
 
 ## Project Overview
 In this term project, students will work in teams of two to design, configure, and program a Raspberry Pi Single Board Computer (SBC) integrated with Arduino-based devices. The objective is to create an IoT system capable of monitoring and controlling a physical process with at least one analog measurement, which will be proposed by the students and approved by the teacher. The project will utilize an ESP32 microcontroller configured as a distributed IoT system. The system will feature a supervisory web interface served from the Raspberry Pi (SBC) device.

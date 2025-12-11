@@ -23,7 +23,7 @@ Activities:
     - Questions on Intro to Python in Context from last class
     - Theory: [The Client-Server Communication Model and HTTP](https://github.com/paquettm/420-302-VA_A25/blob/main/THEORY/Client-Server_and_HTTP.md)
     - Lab 5 : [ESP32 MicroPython Web Server](https://github.com/paquettm/420-302-VA_A25/blob/main/LABS/LAB5_ESP32_MicroPython_Web_Server.md)
-    - *Term Project:* Homework : Read the [Term Project definition](https://github.com/paquettm/420-302-VA_A25/blob/main/Term_Project.md), compose teams and complete your first Term project proposal brainstorming
+    - *Term Project:* Homework : Read the [Term Project definition](https://github.com/paquettm/420-302-VA_A25/blob/main/ASSIGNMENTS/Term_Project.md), compose teams and complete your first Term project proposal brainstorming
 
 - Class 6 (October 6):
     - *Term Project:* Project Kickoff - Introduction to the project and discussion of project guidelines; **start coding the Python IoT Controller framework**.
@@ -50,12 +50,12 @@ Activities:
     - Lab 8 continued
     - Lab 9: [Python Flask Interactive Web MQTT Data Visualization Dashboard](https://github.com/paquettm/420-302-VA_A25/blob/main/LABS/LAB9_Python_Flask_Interactive_Web_MQTT_Data_Visualization_Dashboard.md)
 
-- November 7: Distribution of [Assignment 2](https://github.com/paquettm/420-302-VA_A25/blob/main/ASSIGNMENTS/Assignment2_Python_Basic_Review.msd1)
+- November 7: Distribution of [Assignment 2](https://github.com/paquettm/420-302-VA_A25/blob/main/ASSIGNMENTS/Assignment2_Python_Basic_Review.md)
     - due December 11, 11:55PM.
 
 - Class 10 (November 10):
     - Lab 10: [Access Control for Python Flask IoT Dashboard](https://github.com/paquettm/420-302-VA_A25/blob/main/LABS/LAB10_Access_Control_for_Python_Flask_IoT_Dashboard)
-    - Work on [Assignment 2](https://github.com/paquettm/420-302-VA_A25/blob/main/ASSIGNMENTS/Assignment2_Python_Basic_Review.msd1) as time permits
+    - Work on [Assignment 2](https://github.com/paquettm/420-302-VA_A25/blob/main/ASSIGNMENTS/Assignment2_Python_Basic_Review.md) as time permits
     - *Term Project:* **Deliverable 3:** Algorithm Development - Present pseudocode outlining the system's operation.
 
 - Class 11 (November 17):

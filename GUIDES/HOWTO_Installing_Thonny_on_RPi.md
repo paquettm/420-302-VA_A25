@@ -1,4 +1,12 @@
-# Installing Thonny on the Raspberry Pi
+---
+title: 'HOW-TO: Installing Thonny on the Raspberry Pi'
+description: 'HOW-TO: Installing Thonny on the Raspberry Pi'
+sidebar:
+  label: 'HOW-TO: Installing Thonny on the Raspberry Pi'
+  order: 3
+---
+
+# HOW-TO: Installing Thonny on the Raspberry Pi
 
 Thonny is a great little editor for Python that supports Python, MicroPython, as well as virtual environments.
 Thonny has its own package manager that can `pip install` packages in your environment(s).

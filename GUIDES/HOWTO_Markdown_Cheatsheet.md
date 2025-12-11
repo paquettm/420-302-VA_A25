@@ -1,4 +1,12 @@
-# Markdown Cheatsheet
+---
+title: 'HOW-TO Write Markdown (Cheatsheet)'
+description: 'HOW-TO Write Markdown (Cheatsheet)'
+sidebar:
+  label: 'HOW-TO Write Markdown (Cheatsheet)'
+  order: 4
+---
+
+# HOW-TO Write Markdown (Cheatsheet)
 
 ## Headers
 

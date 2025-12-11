@@ -1,9 +1,9 @@
 ---
 title: 'HOW-TO: Raspberry Pi SSH and VNC Setup and Use'
-description: 'HOW-TO: Raspberry Pi SSH and VNC Setup and Useashboard'
+description: 'HOW-TO: Raspberry Pi SSH and VNC Setup and Use'
 sidebar:
   label: 'HOW-TO: Raspberry Pi SSH and VNC Setup and Use'
-  order: 2
+  order: 4
 ---
 
 # HOW-TO: Raspberry Pi SSH and VNC Setup and Use
